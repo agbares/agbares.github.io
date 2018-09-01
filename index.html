@@ -17,11 +17,17 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="manifest" href="/manifest.json">
-  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#bdc3c7">
-  <meta name="theme-color" content="#bdc3c7">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="msapplication-TileColor" content="#2d89ef">
+  <meta name="theme-color" content="#ffffff">
 
   <link rel="stylesheet" href="css/style.css">
+
+ <!--Import Google Icon Font-->
+ <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+ <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css"  media="screen,projection"/>
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css" integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Raleway:300,400" rel="stylesheet">
   <!--[if lt IE 9]>
@@ -29,34 +35,87 @@
   <![endif]-->
 </head>
 <body>
-  <div class="content text-center animated fadeIn">
-    <div class="heading">
-      <div class="bar left-bar"></div>
-      <div class="avatar"></div>
-      <div class="bar right-bar"></div>
+  <div class="row top-bar">
+    <div class="col s12 l2 offset-l1">
+      <img class="avatar" src="img/avatar-2x.jpg" />
     </div>
-
-    <div class="about">
-      <h1 class="upper" style="margin-bottom: 8px;">Antonio Bares</h1>
-      <h2 class="light upper" style="margin-top: 8px;">SJSU Student</h2>
-      <p class="headline"><small>'On a quest for innovative solutions.'</small></p>
+    <div class="col s12 l8">
+      <h4 class="section-title bottom-delimiter-white">Antonio G. Bares</h4>
+      <div class="row">
+        <div class="col s12">
+            <h5><i>std::cout << “Hello World!” << std::endl;</i></h5>
+        </div>
+      </div>
     </div>
-
-    <div class="social">
-      <a href="https://www.instagram.com/__antwn/" class="social-icon-link"><img src="img/instagram.svg" alt="instagram" class="social-icon"/></a>
-      <a href="https://www.linkedin.com/in/agbares/" class="social-icon-link"><img src="img/linkedin.svg" alt="linkedin" class="social-icon"/></a>
-      <a href="https://github.com/agbares" class="social-icon-link"><img src="img/github.svg" alt="github" class="social-icon"/></a>
-    </div>
+    <div class="col s1"></div>
   </div>
 
-  <div class="copyright text-center light">
-    <p>&copy; 2018 Antonio Bares</p>
-  </div>
+  <div class="row content">
+    <div class="col s12 l7 offset-l1">
+      <h6 class="section-title bottom-delimiter-black">Projects</h6>
+      <div class="row projects">
+        <div class="col s12">
+          <div class="row">
+            <div class="col s12">
+              <p>
+                <b>Gratis Food</b> (UI/UX Design Lead & Developer): Leading the design of a free food application that connects users with excess food.
+                Gratis provides a platform for consumers to find free food that otherwise would have been thrown out.
+                Through Gratis, food providers can readily list excess food on the platform and notify users. Learn more about Gratis Food at: GratisFood.com
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <p>
+                <b>Programmable Passcode Lock</b> (Developer): Co-designed and built a programmable passcode lock using an Arduino Uno and various electrical components,
+                including: push-buttons, inverting Schmitt-triggers for input de-bouncing and several logic gates for decimal to BCD encoding.
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <p>
+                <b>iOS Social Networking App</b> (Lead Developer): Developed a social networking platform that connects users based on interests using a simple algorithm made by fellow group members.
+                Implemented on iOS 9 using Swift 2.2 and Google’s Firebase SDK.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s12 l2 offset-l1">
+      <h6 class="section-title bottom-delimiter-black">Stay Connected!</h6>
+      <div class="row social">
+        <div class="col s12">
+          <div class="row">
+            <div class="col s12">
+              <p>
+                <a href="https://www.instagram.com/__antwn/"><img src="img/instagram.svg" alt="instagram" class="social-icon"/><span class="social-text">@__antwn</span></a>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <p>
+                <a href="https://www.linkedin.com/in/agbares/"><img src="img/linkedin.svg" alt="linkedin" class="social-icon"/><span class="social-text">agbares</span></a>
+              </p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12">
+              <p>
+                <a href="https://github.com/agbares"><img src="img/github.svg" alt="github" class="social-icon"/><span class="social-text">agbares</span></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-backstretch/2.0.4/jquery.backstretch.min.js"></script>
-  <script>
-    $.backstretch("img/background-2x.jpg");
-  </script>
+    </div>
+
+
+
+  </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 </body>
 </html>
