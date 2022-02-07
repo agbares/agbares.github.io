@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Spark Executor Memory | Antonio Bares</title>
+<title>Spark Executor Memory (Pyspark) | Antonio Bares</title>
 <meta name="keywords" content="" />
 <meta name="description" content="Over the past year, I&rsquo;ve been building a fair amount of Spark ETL pipelines at work (via pyspark). The complexity of the pipelines I build have been growing. Evidently, this complexity required a better understanding in Spark&rsquo;s inner workings.
 After a lot of reading, youtube videos, and docs, I think I have a beter grasp on Spark&rsquo;s memory model. A lot of the information online can be quite confusing. And frankly, incorrect or out of date.">
@@ -58,7 +58,7 @@ After a lot of reading, youtube videos, and docs, I think I have a beter grasp o
         }
 
     </style>
-</noscript><meta property="og:title" content="Spark Executor Memory" />
+</noscript><meta property="og:title" content="Spark Executor Memory (Pyspark)" />
 <meta property="og:description" content="Over the past year, I&rsquo;ve been building a fair amount of Spark ETL pipelines at work (via pyspark). The complexity of the pipelines I build have been growing. Evidently, this complexity required a better understanding in Spark&rsquo;s inner workings.
 After a lot of reading, youtube videos, and docs, I think I have a beter grasp on Spark&rsquo;s memory model. A lot of the information online can be quite confusing. And frankly, incorrect or out of date." />
 <meta property="og:type" content="article" />
@@ -67,7 +67,7 @@ After a lot of reading, youtube videos, and docs, I think I have a beter grasp o
 <meta property="article:modified_time" content="2022-02-06T17:35:01-08:00" />
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Spark Executor Memory"/>
+<meta name="twitter:title" content="Spark Executor Memory (Pyspark)"/>
 <meta name="twitter:description" content="Over the past year, I&rsquo;ve been building a fair amount of Spark ETL pipelines at work (via pyspark). The complexity of the pipelines I build have been growing. Evidently, this complexity required a better understanding in Spark&rsquo;s inner workings.
 After a lot of reading, youtube videos, and docs, I think I have a beter grasp on Spark&rsquo;s memory model. A lot of the information online can be quite confusing. And frankly, incorrect or out of date."/>
 
@@ -86,7 +86,7 @@ After a lot of reading, youtube videos, and docs, I think I have a beter grasp o
     {
       "@type": "ListItem",
       "position":  3 ,
-      "name": "Spark Executor Memory",
+      "name": "Spark Executor Memory (Pyspark)",
       "item": "https://agbares.com/blog/spark-executor-memory/"
     }
   ]
@@ -96,14 +96,14 @@ After a lot of reading, youtube videos, and docs, I think I have a beter grasp o
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Spark Executor Memory",
-  "name": "Spark Executor Memory",
+  "headline": "Spark Executor Memory (Pyspark)",
+  "name": "Spark Executor Memory (Pyspark)",
   "description": "Over the past year, I\u0026rsquo;ve been building a fair amount of Spark ETL pipelines at work (via pyspark). The complexity of the pipelines I build have been growing. Evidently, this complexity required a better understanding in Spark\u0026rsquo;s inner workings.\nAfter a lot of reading, youtube videos, and docs, I think I have a beter grasp on Spark\u0026rsquo;s memory model. A lot of the information online can be quite confusing. And frankly, incorrect or out of date.",
   "keywords": [
     
   ],
-  "articleBody": "Over the past year, I’ve been building a fair amount of Spark ETL pipelines at work (via pyspark). The complexity of the pipelines I build have been growing. Evidently, this complexity required a better understanding in Spark’s inner workings.\nAfter a lot of reading, youtube videos, and docs, I think I have a beter grasp on Spark’s memory model. A lot of the information online can be quite confusing. And frankly, incorrect or out of date. That being said, I myself, may be incorrect and would love feedback. As I continue to work on optimizing my spark pipelines, hopefully I pick up more information and correct anything that may be wrong.\nWhat does the executor container’s memory look like? On a very high level, the executor container’s memory can be segmented into the following sections:\n JVM memory  Heap Off-heap   Non-JVM memory  Notice that in the above sentence, I italize the word “container”. A source of my confusion in the executor’s memory model was the spark.executor.memory parameter in conjunction with the other memory parameters (e.g. spark.executor.memoryOverhead). Specifying spark.executor.memory = 4g results in allocating 4 GB of memory for the JVM heap.\nJVM memory JVM memory contains Heap and Off-Heap memory. Which looks as follows: Heap Spark utilizes the heap for most of its operations. Spark’s heap uasge looks as follows: There are three main segments:\n Spark memory  Execution - used for computation during task execution (e.g. for shuffles, joins, etc) Storage - used for storing cached data   User memory - used for storing user defined data structures, UDFs, etc Reserved memory - reserved for the system to store Spark’s internal objects  Off-heap Non-JVM memory ",
-  "wordCount" : "273",
+  "articleBody": "Over the past year, I’ve been building a fair amount of Spark ETL pipelines at work (via pyspark). The complexity of the pipelines I build have been growing. Evidently, this complexity required a better understanding in Spark’s inner workings.\nAfter a lot of reading, youtube videos, and docs, I think I have a beter grasp on Spark’s memory model. A lot of the information online can be quite confusing. And frankly, incorrect or out of date. That being said, I myself, may be incorrect and would love feedback. As I continue to work on optimizing my spark pipelines, hopefully I pick up more information and correct anything that may be wrong.\nWhat does the executor container’s memory look like? On a very high level, the executor container’s memory can be segmented into the following sections:\n JVM memory  Heap Off-heap   Non-JVM memory  Notice that in the above sentence, I italize the word “container”. A source of my confusion in the executor’s memory model was the spark.executor.memory parameter in conjunction with the other memory parameters (e.g. spark.executor.memoryOverhead). Specifying spark.executor.memory = 4g results in allocating 4 GB of memory for the JVM heap.\nJVM memory JVM memory contains Heap and Off-Heap memory. Which looks as follows: Heap Spark utilizes the heap for most of its operations. Spark’s heap uasge looks as follows: There are three main segments:\n Spark memory  Execution - used for computation during task execution (e.g. for shuffles, joins, etc) Storage - used for storing cached data   User memory - used for storing user defined data structures, UDFs, etc Reserved memory - reserved for the system to store Spark’s internal objects  Off-heap Spark’s off heap memory is simply the jvm off-heap which is configured via spark.memory.offHeap.size. It is disabled by default and can be enabled via the spark.memory.offHeap.enabled param.\nAlthough off-heap usage is disabled, it’s still possible for spark to use off-heap memory via the memory overhead (see below). This is due to spark.network.io.preferDirectBufs which is enabled by default. What this flag does is allows off-heap buffers to be used during shuffles and cache block transfers.\nNon-JVM memory The non-JVM memory looks as follows: There are two segments:\n memory overhead pyspark memory  I find this area the most confusing since the documentation is rather light and online resources don’t cover it well.\nMemory Overhead The memory overhead, according to the Spark docs, “accounts for things like VM overheads, interned strings, other native overheads, etc”. By default, the memory overhead grows in proportion to the executor memory.\nPyspark Memory This is not set by default (via spark.executor.pyspark.memory). This means that the pyspark executor process does not have a memory limit and thus shares the same memory as the overhead.\nThis is an area of potential OOMs as the pyspark process may try to use more than the available memory overhead. It’s recommended to either set the pyspark memory yourself, or provide enough memory overhead.\nSo how does one actually set executor container memory correctly? This is a whole ‘nother beast which I’ll cover in a later post.\n",
+  "wordCount" : "505",
   "inLanguage": "en",
   "datePublished": "2022-02-06T17:35:01-08:00",
   "dateModified": "2022-02-06T17:35:01-08:00",
@@ -172,7 +172,7 @@ After a lot of reading, youtube videos, and docs, I think I have a beter grasp o
   <header class="post-header">
     
     <h1 class="post-title">
-      Spark Executor Memory<sup><span class="entry-isdraft">&nbsp;&nbsp;[draft]</span></sup>
+      Spark Executor Memory (Pyspark)
     </h1>
     <div class="post-meta"><span title='2022-02-06 17:35:01 -0800 PST'>February 6, 2022</span>
 
@@ -200,7 +200,7 @@ After a lot of reading, youtube videos, and docs, I think I have a beter grasp o
 </p>
 <h4 id="heap">Heap<a hidden class="anchor" aria-hidden="true" href="#heap">#</a></h4>
 <p>Spark utilizes the heap for most of its operations. Spark&rsquo;s heap uasge looks as follows:
-<img loading="lazy" src="/spark-executor-memory/heap.png" alt="Overview of JVM memory"  />
+<img loading="lazy" src="/spark-executor-memory/heap.png" alt="Heap memory"  />
 </p>
 <p>There are three main segments:</p>
 <ul>
@@ -214,7 +214,25 @@ After a lot of reading, youtube videos, and docs, I think I have a beter grasp o
 <li>Reserved memory - reserved for the system to store Spark&rsquo;s internal objects</li>
 </ul>
 <h4 id="off-heap">Off-heap<a hidden class="anchor" aria-hidden="true" href="#off-heap">#</a></h4>
+<p>Spark&rsquo;s off heap memory is simply the jvm off-heap which is configured via <code>spark.memory.offHeap.size</code>. It is disabled by default and can be enabled via the <code>spark.memory.offHeap.enabled</code> param.</p>
+<p>Although off-heap usage is disabled, it&rsquo;s still possible for spark to use off-heap memory via the memory overhead (see below). This is due to <code>spark.network.io.preferDirectBufs</code> which is enabled by default. What this flag does is allows off-heap buffers to be used during shuffles and cache block transfers.</p>
 <h3 id="non-jvm-memory">Non-JVM memory<a hidden class="anchor" aria-hidden="true" href="#non-jvm-memory">#</a></h3>
+<p>The non-JVM memory looks as follows:
+<img loading="lazy" src="/spark-executor-memory/non_jvm.png" alt="Non-JVM memory"  />
+</p>
+<p>There are two segments:</p>
+<ul>
+<li>memory overhead</li>
+<li>pyspark memory</li>
+</ul>
+<p>I find this area the most confusing since the documentation is rather light and online resources don&rsquo;t cover it well.</p>
+<h4 id="memory-overhead">Memory Overhead<a hidden class="anchor" aria-hidden="true" href="#memory-overhead">#</a></h4>
+<p>The memory overhead, according to the Spark docs, &ldquo;accounts for things like VM overheads, interned strings, other native overheads, etc&rdquo;. By default, the memory overhead grows in proportion to the executor memory.</p>
+<h4 id="pyspark-memory">Pyspark Memory<a hidden class="anchor" aria-hidden="true" href="#pyspark-memory">#</a></h4>
+<p>This is not set by default (via spark.executor.pyspark.memory). This means that the pyspark executor process does not have a memory limit and thus shares the same memory as the overhead.</p>
+<p>This is an area of potential OOMs as the pyspark process may try to use more than the available memory overhead. It&rsquo;s recommended to either set the pyspark memory yourself, or provide enough memory overhead.</p>
+<h2 id="so-how-does-one-actually-set-executor-container-memory-correctly">So how does one actually set executor container memory correctly?<a hidden class="anchor" aria-hidden="true" href="#so-how-does-one-actually-set-executor-container-memory-correctly">#</a></h2>
+<p>This is a whole &lsquo;nother beast which I&rsquo;ll cover in a later post.</p>
 
 
   </div>
