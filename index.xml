@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Antonio Bares</title>
+    <link>http://example.org/</link>
+    <description>Recent content on Antonio Bares</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 06 Feb 2022 17:35:01 -0800</lastBuildDate><atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark Executor Memory</title>
+      <link>http://example.org/blog/spark-executor-memory/</link>
+      <pubDate>Sun, 06 Feb 2022 17:35:01 -0800</pubDate>
+      
+      <guid>http://example.org/blog/spark-executor-memory/</guid>
+      <description>Over the past year, I&amp;rsquo;ve been building a fair amount of Spark ETL pipelines at work (via pyspark). The complexity of the pipelines I build have been growing. Evidently, this complexity required a better understanding in Spark&amp;rsquo;s inner workings.
+After a lot of reading, youtube videos, and docs, I think I have a beter grasp on Spark&amp;rsquo;s memory model. A lot of the information online can be quite confusing. And frankly, incorrect or out of date.</description>
+    </item>
+    
+  </channel>
+</rss>
