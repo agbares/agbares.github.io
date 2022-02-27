@@ -6,7 +6,18 @@
     <description>Recent content in Blogs on Antonio Bares</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 06 Feb 2022 17:35:01 -0800</lastBuildDate><atom:link href="https://agbares.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 26 Feb 2022 22:53:30 -0800</lastBuildDate><atom:link href="https://agbares.com/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spark Resource Calculator</title>
+      <link>https://agbares.com/blog/spark-resource-calculator/</link>
+      <pubDate>Sat, 26 Feb 2022 22:53:30 -0800</pubDate>
+      
+      <guid>https://agbares.com/blog/spark-resource-calculator/</guid>
+      <description>After optimizing a few spark jobs, I realized that calculating the executor memory space is an extremely manual process.
+I decided to write a simple UI that calculates an executor&amp;rsquo;s on-heap memory space (e.g. spark/executor/storage memory). I might extend this in the future to also include the executor container&amp;rsquo;s entire memory space (e.g. executor memory, overhead, and off-heap).
+You can find the calculator by heading to agbares.com/spark-resource-calculator-ui</description>
+    </item>
+    
     <item>
       <title>Spark Executor Memory (Pyspark)</title>
       <link>https://agbares.com/blog/spark-executor-memory/</link>
